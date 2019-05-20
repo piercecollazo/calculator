@@ -1,4 +1,3 @@
-let currentNum = 0
 let storedNum = 'banana'
 let displayNum = ''
 let currentAlg = ''
@@ -28,26 +27,26 @@ function operator(event){
     let result = document.querySelector(".calculatorDisplay")
     switch(alg){
         case '+':
-            currentAlg = '+'
             enter()
+            currentAlg = '+'
             displayNum = ''
         break;
 
         case '-':
-            currentAlg = '-'
             enter()
+            currentAlg = '-'
             displayNum = ''
         break;
 
         case '×':
-            currentAlg = '*'
             enter()
+            currentAlg = '*'
             displayNum = ''
         break;
 
         case '÷':
-            currentAlg = '÷'
             enter()
+            currentAlg = '÷'
             displayNum = ''
         break;
     }
@@ -60,7 +59,10 @@ function numKey(event){
 }
 
 function clear(){
-
+    storedNum = 'banana'
+    displayNum = ''
+    currentAlg = ''
+    document.querySelector(".calculatorDisplay").textContent = 0
 }
 
 function enter(){
@@ -70,7 +72,7 @@ function enter(){
         case '+': 
             storedNum += parseFloat(displayNum)
             result.textContent = storedNum
-            displayNum = storedNum
+            displayNum = storedNum.toString()
         break;
 
         case '-':
@@ -79,7 +81,7 @@ function enter(){
             }else{
                 storedNum -= parseFloat(displayNum)
                 result.textContent = storedNum
-                displayNum = storedNum
+                displayNum = storedNum.toString()
             }
         break;
 
@@ -89,7 +91,7 @@ function enter(){
             }else{
                 storedNum *= parseFloat(displayNum)
                 result.textContent = storedNum
-                displayNum = storedNum
+                displayNum = storedNum.toString()
             }
         break;
 
@@ -99,8 +101,13 @@ function enter(){
             }else{
                 storedNum /= parseFloat(displayNum)
                 result.textContent = storedNum
-                displayNum = storedNum
+                displayNum = storedNum.toString()
             }
         break;
+
+        default: 
+            storedNum = parseFloat(displayNum)
+            result.textContent = storedNum
+            displayNum = storedNum.toString()
     }
 }
